@@ -1,22 +1,18 @@
 import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
 import Cards  from 'Components/Cards/Cards'
 import { ThemeContext } from 'App'
+import './home.css'
 
 const Home = () => {
 
-  const [ services, setServices ] = useState([])
-  const url = 'https://jsonplaceholder.typicode.com/photos?_limit=20'
-
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setServices(data)
-      })
-  }, [url])
+  const {theme} = useContext(ThemeContext)
+  const {services} = useContext(ThemeContext)
 
   return(
     <div>
+      <div id="home-title" style={theme}>
+        Home
+      </div>
       <Cards services={services} />
     </div>
   )

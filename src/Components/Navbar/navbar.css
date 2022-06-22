@@ -1,4 +1,27 @@
 .navbar {
   height: 80px;
-  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.312);
+}
+
+.switch-button {
+  margin-right: 50px;
+}
+
+.display-flex-links {
+  margin-left: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.display-flex-links a:hover{
+  color: rgb(8, 96, 218);
+}
+
+.display-flex-links a {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
 }

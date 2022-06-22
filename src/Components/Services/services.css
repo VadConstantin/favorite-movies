@@ -1,0 +1,17 @@
+#services-title {
+  padding-top: 50px;
+  padding-left: 60px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+#service-title {
+  padding-top: 50px;
+  padding-left: 60px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.service {
+  padding-left: 60px;
+}

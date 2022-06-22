@@ -1,19 +1,27 @@
 .card {
   width: 250px;
-  border: 1px solid rgb(0, 0, 0);
+  height: 350px;
+  border: 1px solid rgb(163, 163, 163);
   border-radius: 5px;
   padding: 20px;
+  color: rgb(48, 47, 51) !important;
 }
 
 .cards {
+  padding-top: 50px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  padding-left: 60px;
+}
+
+.cards a {
+  text-decoration: none;
 }
 
 .image {
-    margin-top: 20px;
-    max-width: 200px;
-    max-height: 200px;
-    overflow: hidden;
+  margin-top: 20px;
+  max-width: 200px;
+  max-height: 200px;
+  overflow: hidden;
 }

@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import './card.css'
 import { ThemeContext } from 'App'
+import {Link} from 'react-router-dom'
 
 const Card = ({ title, children }) => {
   return (
@@ -15,19 +16,23 @@ const Card = ({ title, children }) => {
 
 const Cards = ({ services }) => {
 
-  const context2 = useContext(ThemeContext)
-  console.log(context2);
+  const {theme} = useContext(ThemeContext)
 
   return (
-    <div className="cards" style={context2.theme}>
-      {services.map((service) => {
-        return (
-          <Card key={service.id} title={service.title}>
-            <img src={service.url} alt={service.title} />
-          </Card>
-        )
-      })}
+    <div style={theme}>
+      <div className="cards" >
+        {services.map((service) => {
+          return (
+          <Link to={"/services/" + service.id}>
+            <Card key={service.id} title={service.title}>
+              <img src={service.url} alt={service.title} />
+            </Card>
+          </Link>
+          )
+        })}
+      </div>
     </div>
+
   )
 }
 
