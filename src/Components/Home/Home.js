@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
 import Cards  from 'Components/Cards/Cards'
-import { ThemeContext } from 'App'
+import { MainContext } from 'App'
 import './home.css'
 
 const Home = () => {
 
-  const {theme} = useContext(ThemeContext)
-  const {services} = useContext(ThemeContext)
+  const {theme} = useContext(MainContext)
+  const {services} = useContext(MainContext)
 
   return(
     <div>

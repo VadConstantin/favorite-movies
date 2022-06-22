@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import './navbar.css'
-import { ThemeContext } from 'App'
+import { MainContext } from 'App'
 import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
-  const context = useContext(ThemeContext)
-  const {toggleTheme} = useContext(ThemeContext)
+  const context = useContext(MainContext)
+  const {toggleTheme} = useContext(MainContext)
 
   return(
     <div className="navbar-container">

@@ -21,13 +21,11 @@ const url = 'https://jsonplaceholder.typicode.com/photos?_limit=20'
 
 
 // initializing the context ThemeContext
-export const ThemeContext = React.createContext({
+export const MainContext = React.createContext({
   theme: THEMES.dark,
   toggleTheme: () => {},
   services: [],
-  getService: () => {}
 })
-
 
 
 function App() {
@@ -49,35 +47,27 @@ function App() {
       })
   }, [url])
 
-
-  // getting service from services
-  const getService = useCallback((x) => {
-    return services.filter(t => t.id === x)
-  }, [services])
-
-
   // creating the final value to pass to the provider
   const value = useMemo(() => {
     return {
       theme: themeValue,
       toggleTheme,
       services,
-      getService
     }
   }, [themeValue, services])
 
   return (
-    <ThemeContext.Provider value={value}>
+    <MainContext.Provider value={value}>
       <Navbar/>
       <div style={value.theme}>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/services" element={<Services />} />
-          <Route path="/services/:id" element={<Service />} />
+          <Route path="/services/:id" element={<Service services={services}/>} />
         </Routes>
       </div>
 
-    </ThemeContext.Provider>
+    </MainContext.Provider>
   );
 }
 

@@ -1,24 +1,24 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { ThemeContext } from 'App'
 import './services.css'
 
-const Service = () => {
+const Service = (props) => {
+
   const params = useParams()
-  const {services} = useContext(ThemeContext)
-  const {getService} = useContext(ThemeContext)
+  const services = props.services
+  const service = services.filter(t => t.id === parseInt(params.id))[0]
 
-  const service = getService(parseInt(params.id))[0]
-
-  console.log(service.title);
+  console.log(service);
 
   return(
+    services.length > 0 &&
     <div>
       <div id="service-title" >
         Service
       </div>
       <div className='service'>
-        {service.title.substring(0,20)}...
+        <strong>Title: </strong>{service.title.substring(0,30)}...
+        <img src={service.url} alt={service.title} />
       </div>
     </div>
   )
