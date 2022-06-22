@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
 import Cards  from 'Components/Cards/Cards'
+import { ThemeContext } from 'App'
 
 const Home = () => {
 
@@ -13,8 +14,6 @@ const Home = () => {
         setServices(data)
       })
   }, [url])
-
-  console.log(services)
 
   return(
     <div>

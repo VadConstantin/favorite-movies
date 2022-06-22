@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './card.css'
+import { ThemeContext } from 'App'
 
 const Card = ({ title, children }) => {
   return (
@@ -13,8 +14,12 @@ const Card = ({ title, children }) => {
 }
 
 const Cards = ({ services }) => {
+
+  const context2 = useContext(ThemeContext)
+  console.log(context2);
+
   return (
-    <div className="cards">
+    <div className="cards" style={context2.theme}>
       {services.map((service) => {
         return (
           <Card key={service.id} title={service.title}>
