@@ -1,0 +1,19 @@
+.card {
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image {
+    margin-top: 20px;
+    max-width: 200px;
+    max-height: 200px;
+    overflow: hidden;
+}
