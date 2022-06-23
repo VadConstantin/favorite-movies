@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import './services.css'
 
-const Service = (props) => {
-
+export const Service = ({ services }) => {
   const params = useParams()
-  const services = props.services
-  const service = services.filter(t => t.id === parseInt(params.id))[0]
+  const service = services.filter(t => t.id === parseInt(params.id))
 
   console.log(service);
 
@@ -23,5 +21,3 @@ const Service = (props) => {
     </div>
   )
 }
-
-export default Service
