@@ -1,9 +1,8 @@
 import React, { useState, useCallback, useMemo, useEffect} from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from 'Components/Home/Home'
 import { Navbar } from 'Components/Navbar/Navbar'
-import Services from './Components/Services/Services'
-import Service from './Components/Services/Service'
+import { Service, Services } from 'Containers/Services'
+import { Home } from 'Containers/Home'
 
 const THEMES = {
   light: {
@@ -54,7 +53,7 @@ function App() {
       toggleTheme,
       services,
     }
-  }, [themeValue, services])
+  }, [themeValue, services, toggleTheme])
 
   return (
     <MainContext.Provider value={value}>

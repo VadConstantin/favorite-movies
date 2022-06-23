@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
-import Cards  from 'Components/Cards/Cards'
+import React, { useContext } from 'react'
+import { CardsLayout }  from 'Components/'
 import { MainContext } from 'App'
 import './home.css'
 
-const Home = () => {
+export const Home = () => {
 
   const {theme} = useContext(MainContext)
   const {services} = useContext(MainContext)
@@ -13,9 +13,7 @@ const Home = () => {
       <div id="home-title" style={theme}>
         Home
       </div>
-      <Cards services={services} />
+      <CardsLayout services={services} />
     </div>
   )
 }
-
-export default Home

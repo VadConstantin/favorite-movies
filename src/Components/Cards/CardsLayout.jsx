@@ -2,19 +2,9 @@ import React, {useContext} from 'react'
 import './card.css'
 import { MainContext } from 'App'
 import {Link} from 'react-router-dom'
+import { Card } from './Card'
 
-const Card = ({ title, children }) => {
-  return (
-    <div className='card'>
-      {title}
-      <div className="image">
-        {children}
-      </div>
-    </div>
-  )
-}
-
-const Cards = ({ services }) => {
+export const CardsLayout = ({ services }) => {
 
   const {theme} = useContext(MainContext)
 
@@ -24,7 +14,7 @@ const Cards = ({ services }) => {
         {services.map((service) => {
           return (
           <Link key={service.id} to={"/services/" + service.id}>
-            <Card key={service.id} title={service.title}>
+            <Card title={service.title}>
               <img src={service.url} alt={service.title} />
             </Card>
           </Link>
@@ -35,5 +25,3 @@ const Cards = ({ services }) => {
 
   )
 }
-
-export default Cards

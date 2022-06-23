@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import './services.css'
 
-const Service = (props) => {
+export const Service = (props) => {
 
   const params = useParams()
   const services = props.services
@@ -23,5 +23,3 @@ const Service = (props) => {
     </div>
   )
 }
-
-export default Service
