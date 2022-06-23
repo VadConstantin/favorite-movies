@@ -27,7 +27,6 @@ export const MainContext = React.createContext({
   services: [],
 })
 
-
 function App() {
 
   const [themeValue, setThemeValue ] = useState(THEMES.light)
