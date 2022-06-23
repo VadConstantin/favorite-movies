@@ -6,8 +6,6 @@ import { Home } from 'Containers/Home'
 import { Theme } from './Utilities'
 import { servicesService } from 'Utilities/services.service'
 
-const url = 'https://jsonplaceholder.typicode.com/photos?_limit=20'
-
 // initializing the context ThemeContext
 export const MainContext = React.createContext({
   theme: Theme.dark,
