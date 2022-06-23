@@ -12,11 +12,8 @@ export const MainContext = React.createContext({
   theme: Theme.dark,
   toggleTheme: () => {},
   services: [],
-<<<<<<< HEAD:src/App.js
-})
-=======
 });
->>>>>>> 5b9bd71a26e2be7bf1398cd05175928e38ec41e2:src/App.jsx
+
 
 function App() {
   const [services, setServices ] = useState([])
