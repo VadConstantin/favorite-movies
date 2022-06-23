@@ -4,7 +4,7 @@ import { MainContext } from '../../App'
 import './services.css'
 
 export const Services = ({ services }) => {
-  const {theme} = useContext(MainContext)
+  const { theme } = useContext(MainContext)
 
   return (
     <div>

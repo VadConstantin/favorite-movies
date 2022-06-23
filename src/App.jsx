@@ -32,15 +32,12 @@ function App() {
     }
   }, [themeValue, services, toggleTheme])
 
-
   // fetching data from API and setting 'services' value
   // Don't need to add URL as a dependency as it is a non-changing variable
   useEffect(() => {
     fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setServices(data)
-      })
+    .then(res => res.json())
+    .then(data => setServices(data))
   }, [])
 
   return (
