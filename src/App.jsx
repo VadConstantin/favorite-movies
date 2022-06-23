@@ -3,48 +3,25 @@ import { Routes, Route } from 'react-router-dom'
 import { Navbar } from 'Components/Navbar/Navbar'
 import { Service, Services } from 'Containers/Services'
 import { Home } from 'Containers/Home'
-
-const THEMES = {
-  light: {
-    background: "rgb(255, 255, 255)",
-    color: "rgb(48, 47, 51)",
-
-  },
-  dark: {
-    background: "rgb(48, 47, 51)",
-    color: "rgb(255, 255, 255)",
-  }
-}
+import { Theme } from './Utilities'
 
 const url = 'https://jsonplaceholder.typicode.com/photos?_limit=20'
 
-
 // initializing the context ThemeContext
 export const MainContext = React.createContext({
-  theme: THEMES.dark,
+  theme: Theme.dark,
   toggleTheme: () => {},
   services: [],
-})
-
+});
 
 function App() {
-
-  const [themeValue, setThemeValue ] = useState(THEMES.light)
   const [services, setServices ] = useState([])
+  const [themeValue, setThemeValue ] = useState(Theme.light)
 
   // toggling theme value
   const toggleTheme = useCallback(() => {
-    setThemeValue(t => t === THEMES.dark ? THEMES.light : THEMES.dark)
+    setThemeValue(t => t === Theme.dark ? Theme.light : Theme.dark)
   }, [])
-
-  // fetching data from API and setting 'services' value
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setServices(data)
-      })
-  }, [url])
 
   // creating the final value to pass to the provider
   const value = useMemo(() => {
@@ -55,17 +32,27 @@ function App() {
     }
   }, [themeValue, services, toggleTheme])
 
+
+  // fetching data from API and setting 'services' value
+  // Don't need to add URL as a dependency as it is a non-changing variable
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setServices(data)
+      })
+  }, [])
+
   return (
     <MainContext.Provider value={value}>
       <Navbar/>
       <div style={value.theme}>
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/services" element={<Services />} />
+          <Route path="/" element={<Home services={services} />}/>
+          <Route path="/services" element={<Services services={services} />} />
           <Route path="/services/:id" element={<Service services={services}/>} />
         </Routes>
       </div>
-
     </MainContext.Provider>
   );
 }

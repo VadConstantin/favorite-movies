@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { CardsLayout }  from 'Components/'
-import { MainContext } from 'App'
+import { MainContext } from '../../App'
 import './home.css'
 
-export const Home = () => {
-
+export const Home = ({ services }) => {
   const {theme} = useContext(MainContext)
-  const {services} = useContext(MainContext)
+  // const {services} = useContext(MainContext)
+
+
 
   return(
     <div>

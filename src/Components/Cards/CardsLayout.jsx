@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import './card.css'
-import { MainContext } from 'App'
+import { MainContext } from '../../App'
 import {Link} from 'react-router-dom'
 import { Card } from './Card'
 
