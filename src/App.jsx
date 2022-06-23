@@ -4,8 +4,7 @@ import { Navbar } from 'Components/Navbar/Navbar'
 import { Service, Services } from 'Containers/Services'
 import { Home } from 'Containers/Home'
 import { Theme } from './Utilities'
-
-const url = 'https://jsonplaceholder.typicode.com/photos?_limit=20'
+import { servicesService } from 'Utilities/services.service'
 
 // initializing the context ThemeContext
 export const MainContext = React.createContext({
@@ -36,9 +35,10 @@ function App() {
   // fetching data from API and setting 'services' value
   // Don't need to add URL as a dependency as it is a non-changing variable
   useEffect(() => {
-    fetch(url)
-    .then(res => res.json())
-    .then(data => setServices(data))
+    servicesService.getServicesData()
+    .then(setServices)
+    // no need to break down .then(data => setServices(data)) as the function will automatically be passed the value
+    // returned by the function above
   }, [])
 
   return (
