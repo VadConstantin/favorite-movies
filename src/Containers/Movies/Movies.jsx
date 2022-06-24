@@ -9,10 +9,11 @@ export const Movies = ({movies}) => {
       <div id="movies-title">Movies</div>
       <div className="movie-cards">
         {movies.map((movie) => {
-          return <Movie key={movie.id}
-          title={movie.title}
-          year={movie.year}
-          image={movie.image}
+          return <Movie
+            key={movie.id}
+            title={movie.title}
+            year={movie.year}
+            image={movie.image}
           />
         })}
 
