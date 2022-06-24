@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Movie} from 'Containers/Movies/Movie'
+import { Movie} from 'Components/Movies/Movie'
 import './movies.css'
 
 export const Movies = ({movies}) => {
@@ -16,7 +16,6 @@ export const Movies = ({movies}) => {
             image={movie.image}
           />
         })}
-
       </div>
     </div>
   )

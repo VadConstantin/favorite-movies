@@ -4,7 +4,8 @@ import { Navbar } from 'Components/Navbar/Navbar'
 import { Service, Services } from 'Containers/Services'
 import { Home } from 'Containers/Home'
 import { Theme } from './Utilities'
-import { Movies } from 'Containers/Movies/Movies'
+import { Movies } from 'Components/Movies/Movies'
+import Form from 'Components/Form/Form'
 
 const url = 'https://jsonplaceholder.typicode.com/photos?_limit=20'
 const moviesUrl = "https://imdb-api.com/en/API/Top250Movies/k_7iuspfzy"
@@ -18,6 +19,7 @@ export const MainContext = React.createContext({
 
 
 function App() {
+
   const [ services, setServices ] = useState([])
   const [ themeValue, setThemeValue ] = useState(Theme.light)
   const [ movies, setMovies ] = useState([])
@@ -56,13 +58,14 @@ function App() {
 
   return (
     <MainContext.Provider value={value}>
-      <Navbar/>
+      <Navbar />
       <div style={value.theme}>
         <Routes>
           <Route path="/" element={<Home services={services} />}/>
           <Route path="/services" element={<Services services={services} />} />
           <Route path="/services/:id" element={<Service services={services}/>} />
           <Route path="/movies" element={<Movies movies={movies}/>} />
+          <Route path="/form" element={<Form />} />
         </Routes>
       </div>
     </MainContext.Provider>

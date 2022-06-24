@@ -6,6 +6,8 @@ import './home.css'
 export const Home = ({ services }) => {
   const { theme } = useContext(MainContext)
 
+  console.log('render HOME');
+
   return(
     <div>
       <div id="home-title" style={theme}>

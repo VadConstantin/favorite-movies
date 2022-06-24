@@ -15,6 +15,8 @@ export const Navbar = () => {
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
             <Link to="/movies">Movies</Link>
+            <Link to="/form">Form</Link>
+            <Link to="#">{JSON.parse(localStorage.getItem('myData')).firstName}</Link>
           </div>
           <div className="switch-button">
             <button className="btn btn-primary" onClick={toggleTheme}> switch theme</button>

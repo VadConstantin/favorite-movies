@@ -1,0 +1,9 @@
+.my-infos {
+  border: 1px solid rgb(104, 108, 124);
+  border-radius: 5px;
+  padding: 30px 0 30px 30px;
+}
+
+.form-background {
+  height: 100vh;
+}

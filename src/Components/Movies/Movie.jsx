@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './movies.css'
 
 export const Movie = (props) => {
@@ -21,9 +21,9 @@ export const Movie = (props) => {
   const movieYear = props.year
 
   return(
-    <div onMouseEnter={handleEnter} onMouseLeave={handleExit} className={active ? "active" : null}>
+    <div onMouseEnter={handleEnter} onMouseLeave={handleExit}>
       <div className="movie-title"> {movieTitle} <small> ({movieYear}) </small></div>
-      <div className="movie-card" style={{ backgroundImage: `url(${movieUrl})`}}>
+      <div className={active ? "active movie-card" : "movie-card"} style={{ backgroundImage: `url(${movieUrl})`}}>
       </div>
     </div>
   )
