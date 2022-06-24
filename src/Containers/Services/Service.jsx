@@ -4,11 +4,9 @@ import './services.css'
 
 
 export const Service = ({ services }) => {
+
   const params = useParams()
   const service = services.filter(t => t.id === parseInt(params.id))[0]
-
-
-  console.log(service);
 
   return(
     services.length > 0 &&

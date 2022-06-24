@@ -1,0 +1,39 @@
+.movie-card {
+  width: 250px;
+  height: 350px;
+  border: 1px solid rgb(48, 48, 48);
+  border-radius: 5px;
+  padding: 20px;
+  color: inherit;
+  background-size:100% 100%;
+}
+
+.movie-title {
+  max-width: 250px;
+}
+
+.movie-cards {
+  padding-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 60px;
+}
+
+.movie-image {
+  margin-top: 20px;
+  max-width: 200px;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.movie-cards a {
+  text-decoration: none;
+}
+
+#movies-title {
+  padding-top: 50px;
+  padding-left: 60px;
+  font-size: 50px;
+  font-weight: bold;
+}
