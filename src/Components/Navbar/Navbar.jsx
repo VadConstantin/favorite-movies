@@ -32,7 +32,7 @@ export const Navbar = () => {
             <Link to="/form">Form</Link>
           </div>
           <div>
-            <strong>Me:</strong> {profile.firstName || ""} {profile.familyName || ""}
+            <strong>Me:</strong> {profile?.firstName || ""} {profile?.familyName || ""}
           </div>
           <div className="switch-button">
             <button className="btn btn-primary" onClick={toggleTheme}> switch theme</button>
