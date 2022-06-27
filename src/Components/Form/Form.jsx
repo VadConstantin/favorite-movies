@@ -6,7 +6,7 @@ const Form = (props) => {
   // checking if myData from localStorage already exists ( means if user already entered info )
   // if Yes = we init state to the data previously saved
   // if not, initial state = {}
-  const initValue = Object.keys(JSON.parse(localStorage.getItem('myData'))).length > 0 ?
+  const initValue = localStorage.getItem("myData") !== null ?
     JSON.parse(localStorage.getItem('myData')) :
     {}
 
