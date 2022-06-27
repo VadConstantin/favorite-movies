@@ -60,15 +60,17 @@ function App() {
   return (
     <MainContext.Provider value={value}>
       <Navbar />
-      <div style={value.theme}>
-        <Routes>
-          <Route path="/" element={<Home services={services} />}/>
-          <Route path="/services" element={<Services services={services} />} />
-          <Route path="/services/:id" element={<Service services={services}/>} />
-          <Route path="/movies" element={<Movies movies={movies}/>} />
-          <Route path="/form" element={<Form />} />
-          <Route path="/movies/:id" element={<MovieShow movies={movies} />} />
-        </Routes>
+      <div style={{paddingTop: "50px"}}>
+        <div style={value.theme}>
+          <Routes>
+            <Route path="/" element={<Home services={services} />}/>
+            <Route path="/services" element={<Services services={services} />} />
+            <Route path="/services/:id" element={<Service services={services}/>} />
+            <Route path="/movies" element={<Movies movies={movies}/>} />
+            <Route path="/form" element={<Form />} />
+            <Route path="/movies/:id" element={<MovieShow movies={movies} />} />
+          </Routes>
+        </div>
       </div>
     </MainContext.Provider>
   );

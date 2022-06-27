@@ -40,3 +40,21 @@
   transform: scale(1.2);
   transition: ease-in-out transform 0.3s;
 }
+
+.movie-form {
+  padding-top: 50px;
+  padding-left: 60px;
+  position: absolute;
+  bottom: 10px;
+  left: 250px;
+}
+
+.movie-form > input {
+  margin: 10px;
+}
+
+.display-flex {
+  display: flex;
+  position: relative;
+
+}

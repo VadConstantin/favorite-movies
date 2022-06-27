@@ -22,7 +22,7 @@ export const Navbar = () => {
   }, )
 
   return(
-    <div className="navbar-container">
+    <div className="navbar-container pos">
       <nav style={context.theme} className="navbar">
         <div className="container-fluid">
           <div className="display-flex-links">

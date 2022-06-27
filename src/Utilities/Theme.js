@@ -6,6 +6,6 @@ export const Theme = {
   },
   dark: {
     background: "rgb(48, 47, 51)",
-    color: "rgb(255, 255, 255)",
+    color: "rgb(255, 255, 255)"
   }
 }
