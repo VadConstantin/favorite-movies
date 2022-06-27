@@ -27,7 +27,7 @@ export const Navbar = () => {
         <div className="container-fluid">
           <div className="display-flex-links">
             <Link to="/">Home</Link>
-            <Link to="/services">Services</Link>
+            {/* <Link to="/services">Services</Link> */}
             <Link to="/movies">Movies</Link>
             <Link to="/form">Form</Link>
           </div>
