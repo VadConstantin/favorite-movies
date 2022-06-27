@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Movie} from 'Components/Movies/Movie'
+import { MovieCard } from 'Components/Movies/MovieCard'
 import { Link } from 'react-router-dom'
 import './movies.css'
 
@@ -10,9 +10,8 @@ export const Movies = ({movies}) => {
       <div id="movies-title">Movies</div>
       <div className="movie-cards">
         {movies.map((movie) => {
-          return <Link to={"/movies/" + movie.id}>
-            <Movie
-            key={movie.id}
+          return <Link key={movie.id} to={"/movies/" + movie.rank}>
+            <MovieCard
             title={movie.title}
             year={movie.year}
             image={movie.image}

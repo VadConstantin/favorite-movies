@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
 import './movies.css'
 
-export const Movie = (props) => {
+export const MovieCard = (props) => {
 
   const [ active, setActive ] = useState(false)
 
   // this could have been made with CSS hover but it was for fun :)
   const handleEnter = () => {
-    console.log("enter")
     setActive(t => !t)
   }
 
   const handleExit = () => {
-    console.log("exit")
     setActive(t => !t)
   }
 
-  const movieUrl = props.image.slice(0, -27) + ".jpeg"
+  const movieUrl = props.image
   const movieTitle = props.title.length > 20 ? props.title.substring(0, 20) + " ..." : props.title
   const movieYear = props.year
 

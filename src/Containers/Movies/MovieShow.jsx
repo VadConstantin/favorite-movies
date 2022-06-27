@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-const MovieShow = () => {
+export const MovieShow = ({movies}) => {
+
+  const params = useParams()
+  console.log(params.id);
+
+  const movie = movies?.filter(mov => mov.rank === params.id)[0]
+
   return(
-    <div>movieshow</div>
+    movies.length > 0 && (
+    <div>titre : {movie.title}</div>
+    )
   )
 }
-
-export default MovieShow
