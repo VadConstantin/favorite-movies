@@ -7,7 +7,7 @@ export const Navbar = () => {
   const context = useContext(MainContext)
   const {toggleTheme} = useContext(MainContext)
 
-  const [profile, setProfile ] = useState({})
+  const [profile, setProfile ] = useState({firstName: "", familyName: ""})
 
   useEffect(() => {
 
