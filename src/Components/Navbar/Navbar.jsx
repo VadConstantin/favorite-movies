@@ -26,13 +26,15 @@ export const Navbar = () => {
       <nav style={context.theme} className="navbar">
         <div className="container-fluid">
           <div className="display-flex-links">
-            <Link to="/">Home</Link>
-            {/* <Link to="/services">Services</Link> */}
+            <Link to="/">Tv Shows</Link>
             <Link to="/movies">Movies</Link>
             <Link to="/form">Form</Link>
           </div>
           <div>
-            <strong>Me:</strong> {profile?.firstName || ""} {profile?.familyName || ""}
+            <strong>Me: </strong>
+            <Link to="/form" >
+              {profile?.firstName || ""} {profile?.familyName || ""}
+            </Link>
           </div>
           <div className="switch-button">
             <button className="btn btn-primary" onClick={toggleTheme}> switch theme</button>

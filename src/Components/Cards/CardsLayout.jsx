@@ -4,18 +4,19 @@ import { MainContext } from '../../App'
 import {Link} from 'react-router-dom'
 import { Card } from './Card'
 
-export const CardsLayout = ({ services }) => {
+export const CardsLayout = ({ tvShows }) => {
 
   const {theme} = useContext(MainContext)
 
   return (
     <div style={theme}>
       <div className="cards" >
-        {services.map((service) => {
+        {tvShows.map((show) => {
           return (
-          <Link key={service.id} to={"/services/" + service.id}>
-            <Card title={service.title}>
-              <img src={service.url} alt={service.title} />
+
+          <Link key={show.id} to={"/tvshows/" + show.id}>
+            <Card title={show.title}>
+              <img src={show.image} alt={show.title} />
             </Card>
           </Link>
           )

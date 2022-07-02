@@ -31,6 +31,9 @@
   position: fixed;
   z-index: 3;
   width: 100%;
+}
 
-
+.navbar-container a {
+  text-decoration: none;
+  color: inherit;
 }

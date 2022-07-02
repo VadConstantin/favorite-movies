@@ -1,19 +1,37 @@
-import React, { useContext } from 'react'
-import { CardsLayout }  from 'Components/'
-import { MainContext } from '../../App'
+import React, { useContext, useState, useCallback } from 'react'
 import './home.css'
+import { Link } from 'react-router-dom'
+import { MovieCard } from 'Components/Movies/MovieCard'
 
-export const Home = ({ services }) => {
-  const { theme } = useContext(MainContext)
+export const Home = ({ tvShows }) => {
 
-  console.log('render HOME');
+  const [input, setInput] = useState("")
 
-  return(
+  const handleChange = useCallback((e) => {
+    setInput(e.target.value);
+  })
+
+  return (
     <div>
-      <div id="home-title" style={theme}>
-        Home
+      <div className="display-flex">
+        <div id="movies-title">Tv Shows</div>
+
+        <form className="movie-form">
+          <label htmlFor="filter">Find a tv show ! </label>
+          <input id="filter" type="text" onChange={handleChange} />
+        </form>
       </div>
-      <CardsLayout services={services} />
+
+      <div className="movie-cards">
+        {tvShows.filter(movie => movie.title.toLowerCase().includes(input.toLowerCase())).map((movie) => {
+          return <Link key={movie.id} to={"/movies/" + movie.rank}>
+            <MovieCard
+              title={movie.title}
+              year={movie.year}
+              image={movie.image}
+            /></Link>
+        })}
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { MovieCard } from 'Components/Movies/MovieCard'
 import { Link } from 'react-router-dom'
 import './movies.css'
@@ -21,7 +21,6 @@ export const Movies = ({movies}) => {
           <input id="filter" type="text" onChange={handleChange}/>
         </form>
       </div>
-
 
       <div className="movie-cards">
         {movies.filter(movie => movie.title.toLowerCase().includes(input.toLowerCase())).map((movie) => {

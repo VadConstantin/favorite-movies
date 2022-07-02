@@ -1,29 +1,34 @@
 import React, { useState, useCallback, useMemo, useEffect} from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Navbar } from 'Components/Navbar/Navbar'
-import { Service, Services } from 'Containers/Services'
 import { Home } from 'Containers/Home'
 import { Theme } from './Utilities'
 import { Movies } from 'Components/Movies/Movies'
-import { MovieShow }  from 'Containers/Movies/MovieShow'
+import { MovieShow }  from 'Containers/Movies/MovieShow'
 import Form from 'Components/Form/Form'
 
-const url = 'https://jsonplaceholder.typicode.com/photos?_limit=20'
+const tvUrl = 'https://imdb-api.com/en/API/Top250TVs/k_7iuspfzy'
 const moviesUrl = "https://imdb-api.com/en/API/Top250Movies/k_7iuspfzy"
 
 // initializing the context ThemeContext
 export const MainContext = React.createContext({
   theme: Theme.dark,
   toggleTheme: () => {},
-  services: [],
+  tvShows: [],
 });
-
 
 function App() {
 
-  const [ services, setServices ] = useState([])
+  const [ tvShows, setTvShows ] = useState([])
   const [ themeValue, setThemeValue ] = useState(Theme.light)
   const [ movies, setMovies ] = useState([])
+
+  // fetching tvShows
+  useEffect(() => {
+    fetch(tvUrl)
+      .then(res => res.json())
+      .then(data => setTvShows(data.items))
+  }, [])
 
   //fetching movies
   useEffect(() => {
@@ -32,8 +37,9 @@ function App() {
       .then(data => {
         setMovies(data.items);
       })
+  }, [])
 
-  }, [moviesUrl])
+
 
   // toggling theme value
   const toggleTheme = useCallback(() => {
@@ -45,17 +51,9 @@ function App() {
     return {
       theme: themeValue,
       toggleTheme,
-      services,
+      tvShows,
     }
-  }, [themeValue, services, toggleTheme])
-
-  // fetching data from API and setting 'services' value
-  // Don't need to add URL as a dependency as it is a non-changing variable
-  useEffect(() => {
-    fetch(url)
-    .then(res => res.json())
-    .then(data => setServices(data))
-  }, [])
+  }, [themeValue, tvShows, toggleTheme])
 
   return (
     <MainContext.Provider value={value}>
@@ -63,9 +61,9 @@ function App() {
       <div style={{paddingTop: "50px"}}>
         <div style={value.theme}>
           <Routes>
-            <Route path="/" element={<Home services={services} />}/>
-            <Route path="/services" element={<Services services={services} />} />
-            <Route path="/services/:id" element={<Service services={services}/>} />
+            <Route path="/" element={<Home tvShows={tvShows} />}/>
+            {/* <Route path="/tvshows" element={<Services tvShows={tvShows} />} />
+            <Route path="/tvshows/:id" element={<Service tvShows={tvShows}/>} /> */}
             <Route path="/movies" element={<Movies movies={movies}/>} />
             <Route path="/form" element={<Form />} />
             <Route path="/movies/:id" element={<MovieShow movies={movies} />} />
