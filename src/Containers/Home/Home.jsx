@@ -23,12 +23,12 @@ export const Home = ({ tvShows }) => {
       </div>
 
       <div className="movie-cards">
-        {tvShows.filter(movie => movie.title.toLowerCase().includes(input.toLowerCase())).map((movie) => {
-          return <Link key={movie.id} to={"/movies/" + movie.rank}>
+        {tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())).map((tv) => {
+          return <Link key={tv.id} to={"/tvshows/" + tv.rank}>
             <MovieCard
-              title={movie.title}
-              year={movie.year}
-              image={movie.image}
+              title={tv.title}
+              year={tv.year}
+              image={tv.image}
             /></Link>
         })}
       </div>
