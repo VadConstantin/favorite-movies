@@ -4,13 +4,13 @@ import { MainContext } from '../../App'
 import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
+
   const context = useContext(MainContext)
   const {toggleTheme} = useContext(MainContext)
 
   const [profile, setProfile ] = useState({firstName: "", familyName: ""})
 
   useEffect(() => {
-
     const intervalID = setInterval(() => {
       const localStorageData = JSON.parse(localStorage.getItem('myData'))
       setProfile(localStorageData)
@@ -19,7 +19,7 @@ export const Navbar = () => {
     return () => {
       clearInterval(intervalID)
     }
-  }, )
+  }, [])
 
   return(
     <div className="navbar-container pos">
