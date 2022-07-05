@@ -7,3 +7,23 @@
 .form-background {
   height: 100vh;
 }
+
+.mini-card {
+  max-width: 150px;
+  margin: 0 20px 0 0;
+  border: solid rgba(143, 143, 143, 0.439) 1px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.mini-cards-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: inherit;
+}
+
+.mini-cards-wrapper a {
+  text-decoration: none;
+  color: inherit;
+}

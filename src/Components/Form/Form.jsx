@@ -7,15 +7,11 @@ const Form = (props) => {
   // checking if myData from localStorage already exists ( means if user already entered info )
   // if Yes = we init state to the data previously saved
   // if not, initial state = {}
-
-
   const initValue = localStorage.getItem("myData") !== null ?
     JSON.parse(localStorage.getItem('myData')) :
     {}
 
   const [profile, setProfile] = useState(initValue)
-  const [favoriteMovies, setFavoriteMovies ] = useState([])
-  const [favoriteTvShows, setFavoriteTvSHows] = useState([])
 
   const handleSubmit = useCallback((e) => {
 
@@ -49,8 +45,6 @@ const Form = (props) => {
 
   //uncontrolled form, only one render is when submit !
   return(
-
-
     <div className="container pt-5 form-background">
       <form className="form" onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -85,13 +79,16 @@ const Form = (props) => {
       <div className="mt-4">
         My favorite tv shows
         <br />
-        <ul>
+        <div class="mini-cards-wrapper">
           {favoriteTvShowsRanks.map(n => {
             return  <Link to={"/tvshows/" + n} key={n}>
-                      <li> {JSON.parse(localStorage.getItem(n)).title} </li>
+                      <div className="mini-card">
+                        <p> {JSON.parse(localStorage.getItem(n)).title} </p>
+                        <img src={JSON.parse(localStorage.getItem(n)).image} alt="imag"/>
+                      </div>
                     </Link>
           })}
-        </ul>
+        </div>
 
 
       </div>

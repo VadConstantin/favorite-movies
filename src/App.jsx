@@ -23,7 +23,6 @@ function App() {
   const [ tvShows, setTvShows ] = useState([])
   const [ themeValue, setThemeValue ] = useState(Theme.light)
   const [ movies, setMovies ] = useState([])
-  const [ favTvShows, setFavTvShows ] = useState([])
 
   // fetching tvShows
   useEffect(() => {
@@ -58,15 +57,11 @@ function App() {
 
   // updating tvShows state and local storage
   const handleAddFavTvShow = (data) => {
-    if (!favTvShows.includes(data)) {
-      setFavTvShows((prev) => {
-        return [...prev, data]
-      })
-    }
+
     localStorage.setItem(`${data.rank}`, JSON.stringify(data))
   }
 
-  console.log(favTvShows);
+
 
   return (
     <MainContext.Provider value={value}>
@@ -77,7 +72,7 @@ function App() {
             <Route path="/" element={<Home tvShows={tvShows} />}/>
             <Route path="/tvshows/:id" element={<TvShowsShow favorite={(data) => handleAddFavTvShow(data)} tvShows={tvShows}/>} />
             <Route path="/movies" element={<Movies movies={movies}/>} />
-            <Route path="/account" element={<Form tvShows = {tvShows} favTvShows={favTvShows}/>} />
+            <Route path="/account" element={<Form tvShows = {tvShows} />} />
             <Route path="/movies/:id" element={<MovieShow movies={movies} />} />
           </Routes>
         </div>
