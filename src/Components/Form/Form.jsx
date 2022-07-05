@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import './form.css'
+import { Link } from 'react-router-dom'
 
 const Form = (props) => {
 
   // checking if myData from localStorage already exists ( means if user already entered info )
   // if Yes = we init state to the data previously saved
   // if not, initial state = {}
+
 
   const initValue = localStorage.getItem("myData") !== null ?
     JSON.parse(localStorage.getItem('myData')) :
@@ -41,10 +43,14 @@ const Form = (props) => {
     saveDataToLocalStorage()
   }, [saveDataToLocalStorage])
 
-  console.log(profile);
+
+  const favoriteTvShowsRanks = Object.keys(localStorage).filter(rank => parseInt(rank))
+  // => ['1', '4', '8', ...etc ]
 
   //uncontrolled form, only one render is when submit !
   return(
+
+
     <div className="container pt-5 form-background">
       <form className="form" onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -61,6 +67,8 @@ const Form = (props) => {
           {Object.keys(profile).length > 0 ? "Update Account" : "Create Account"}
         </button>
       </form>
+
+
       <br />
       {Object.keys(profile).length > 0 ?
       <div className="my-infos">
@@ -72,6 +80,21 @@ const Form = (props) => {
           <p>{profile.isLiveInFrance ? "Yes" : "No"}</p>
       </div>
       : ""}
+
+
+      <div className="mt-4">
+        My favorite tv shows
+        <br />
+        <ul>
+          {favoriteTvShowsRanks.map(n => {
+            return  <Link to={"/tvshows/" + n} key={n}>
+                      <li> {JSON.parse(localStorage.getItem(n)).title} </li>
+                    </Link>
+          })}
+        </ul>
+
+
+      </div>
     </div>
   )
 }

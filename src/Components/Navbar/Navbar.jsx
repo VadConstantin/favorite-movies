@@ -32,7 +32,7 @@ export const Navbar = () => {
           </div>
           <div>
             <Link to="/account" >
-              <strong>My profile - </strong>
+              <strong>My name - </strong>
               {profile?.firstName || ""} {profile?.familyName || ""}
             </Link>
           </div>

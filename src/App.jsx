@@ -8,7 +8,6 @@ import { MovieShow }  from 'Containers/Movies/MovieShow'
 import { TvShowsShow } from 'Containers/TvShows/TvShowsShow'
 import Form from 'Components/Form/Form'
 
-
 const tvUrl = 'https://imdb-api.com/en/API/Top250TVs/k_7iuspfzy'
 const moviesUrl = "https://imdb-api.com/en/API/Top250Movies/k_7iuspfzy"
 
@@ -57,6 +56,17 @@ function App() {
   }, [themeValue, tvShows, toggleTheme])
 
 
+  // updating tvShows state and local storage
+  const handleAddFavTvShow = (data) => {
+    if (!favTvShows.includes(data)) {
+      setFavTvShows((prev) => {
+        return [...prev, data]
+      })
+    }
+    localStorage.setItem(`${data.rank}`, JSON.stringify(data))
+  }
+
+  console.log(favTvShows);
 
   return (
     <MainContext.Provider value={value}>
@@ -65,9 +75,9 @@ function App() {
         <div style={value.theme}>
           <Routes>
             <Route path="/" element={<Home tvShows={tvShows} />}/>
-            <Route path="/tvshows/:id" element={<TvShowsShow favorite={(input) => setFavTvShows(input)} tvShows={tvShows}/>} />
+            <Route path="/tvshows/:id" element={<TvShowsShow favorite={(data) => handleAddFavTvShow(data)} tvShows={tvShows}/>} />
             <Route path="/movies" element={<Movies movies={movies}/>} />
-            <Route path="/account" element={<Form />} />
+            <Route path="/account" element={<Form tvShows = {tvShows} favTvShows={favTvShows}/>} />
             <Route path="/movies/:id" element={<MovieShow movies={movies} />} />
           </Routes>
         </div>

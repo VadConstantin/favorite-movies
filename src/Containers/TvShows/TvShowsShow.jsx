@@ -12,7 +12,6 @@ export const TvShowsShow = (props) => {
 
 
   const handleClick = () => {
-    console.log(infos)
     props.favorite(infos)
   }
 
