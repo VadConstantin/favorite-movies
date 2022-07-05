@@ -1,3 +1,7 @@
+.card-container {
+
+}
+
 .movie-card {
   width: 250px;
   height: 350px;
@@ -37,7 +41,12 @@
 }
 
 .active {
-  transform: scale(1.2);
+  transform: scale(1.05);
+  transition: ease-in-out transform 0.3s;
+}
+
+.go-up{
+  transform: translateY(-10px);
   transition: ease-in-out transform 0.3s;
 }
 

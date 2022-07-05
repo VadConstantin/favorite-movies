@@ -4,6 +4,7 @@ import './movies.css'
 export const MovieCard = (props) => {
 
   const [ active, setActive ] = useState(false)
+  const [ goUp, setGoUp ] = useState(false)
 
   // this could have been made with CSS hover but it was for fun :)
   const handleEnter = () => {
@@ -19,8 +20,8 @@ export const MovieCard = (props) => {
   const movieYear = props.year
 
   return(
-    <div onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-      <div className="movie-title"> {movieTitle} <small> ({movieYear}) </small></div>
+    <div className="card-container" onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+      <div className={active ? "go-up movie-title" : "movie-title"}> {movieTitle} <small> ({movieYear}) </small></div>
       <div className={active ? "active movie-card" : "movie-card"} style={{ backgroundImage: `url(${movieUrl})`}}>
       </div>
     </div>

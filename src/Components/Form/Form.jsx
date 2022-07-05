@@ -6,11 +6,14 @@ const Form = (props) => {
   // checking if myData from localStorage already exists ( means if user already entered info )
   // if Yes = we init state to the data previously saved
   // if not, initial state = {}
+
   const initValue = localStorage.getItem("myData") !== null ?
     JSON.parse(localStorage.getItem('myData')) :
     {}
 
   const [profile, setProfile] = useState(initValue)
+  const [favoriteMovies, setFavoriteMovies ] = useState([])
+  const [favoriteTvShows, setFavoriteTvSHows] = useState([])
 
   const handleSubmit = useCallback((e) => {
 
@@ -38,6 +41,7 @@ const Form = (props) => {
     saveDataToLocalStorage()
   }, [saveDataToLocalStorage])
 
+  console.log(profile);
 
   //uncontrolled form, only one render is when submit !
   return(
@@ -53,7 +57,9 @@ const Form = (props) => {
           <label className="form-check-label" htmlFor='location'>French resident</label>
           <input className="form-check-input" id="location" name="location" type="checkbox" placeholder="Live in France ?" />
         </div>
-        <button className="btn btn-primary" type="submit">Create Account</button>
+        <button className="btn btn-primary" type="submit">
+          {Object.keys(profile).length > 0 ? "Update Account" : "Create Account"}
+        </button>
       </form>
       <br />
       {Object.keys(profile).length > 0 ?
