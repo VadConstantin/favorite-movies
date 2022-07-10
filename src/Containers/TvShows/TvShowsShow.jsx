@@ -10,9 +10,8 @@ export const TvShowsShow = (props) => {
   const infos = props.tvShows.filter(mov => mov.rank === params.id)[0]
   const imageUrl = infos?.image.slice(0, -27) + ".jpeg"
 
-
   const handleClick = () => {
-    props.favorite(infos)
+    localStorage.setItem(`${infos.rank}`, JSON.stringify(infos))
   }
 
   return (

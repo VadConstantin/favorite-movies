@@ -39,6 +39,18 @@ const Form = (props) => {
     saveDataToLocalStorage()
   }, [saveDataToLocalStorage])
 
+  const getNameFromLocalStorage = (name) => {
+    const title = JSON.parse(localStorage.getItem(name)).title
+    return title.length > 14 ?
+      title.substring(0, 14) + " ..." :
+      title
+  }
+
+  const handleDeleteFav = (n) => {
+    console.log(favoriteTvShowsRanks)
+    console.log(n)
+
+  }
 
   const favoriteTvShowsRanks = Object.keys(localStorage).filter(rank => parseInt(rank))
   // => ['1', '4', '8', ...etc ]
@@ -79,14 +91,17 @@ const Form = (props) => {
       <div className="mt-4">
         My favorite tv shows
         <br />
-        <div class="mini-cards-wrapper">
+        <div className="mini-cards-wrapper">
           {favoriteTvShowsRanks.map(n => {
-            return  <Link to={"/tvshows/" + n} key={n}>
-                      <div className="mini-card">
-                        <p> {JSON.parse(localStorage.getItem(n)).title} </p>
-                        <img src={JSON.parse(localStorage.getItem(n)).image} alt="imag"/>
-                      </div>
-                    </Link>
+            return <div key = { n }>
+                      <Link to={"/tvshows/" + n}>
+                        <div className="mini-card">
+                          <p> {getNameFromLocalStorage(n)} </p>
+                          <img src={JSON.parse(localStorage.getItem(n)).image} alt="imag"/>
+                        </div>
+                      </Link>
+                      <button onClick={() => handleDeleteFav(n)}>Delete</button>
+                    </div>
           })}
         </div>
 

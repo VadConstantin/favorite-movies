@@ -55,13 +55,7 @@ function App() {
   }, [themeValue, tvShows, toggleTheme])
 
 
-  // updating tvShows state and local storage
-  const handleAddFavTvShow = (data) => {
-
-    localStorage.setItem(`${data.rank}`, JSON.stringify(data))
-  }
-
-
+  // updating tvShows in local storage
 
   return (
     <MainContext.Provider value={value}>
@@ -70,7 +64,7 @@ function App() {
         <div style={value.theme}>
           <Routes>
             <Route path="/" element={<Home tvShows={tvShows} />}/>
-            <Route path="/tvshows/:id" element={<TvShowsShow favorite={(data) => handleAddFavTvShow(data)} tvShows={tvShows}/>} />
+            <Route path="/tvshows/:id" element={<TvShowsShow tvShows={tvShows}/>} />
             <Route path="/movies" element={<Movies movies={movies}/>} />
             <Route path="/account" element={<Form tvShows = {tvShows} />} />
             <Route path="/movies/:id" element={<MovieShow movies={movies} />} />

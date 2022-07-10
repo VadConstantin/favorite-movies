@@ -31,6 +31,7 @@ export const Home = ({ tvShows }) => {
               image={tv.image}
             /></Link>
         })}
+
       </div>
     </div>
   )
