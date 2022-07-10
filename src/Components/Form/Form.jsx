@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import './form.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Form = (props) => {
+
+  const navigate = useNavigate()
 
   // checking if myData from localStorage already exists ( means if user already entered info )
   // if Yes = we init state to the data previously saved
@@ -56,7 +58,10 @@ const Form = (props) => {
 
   //uncontrolled form, only one render is when submit !
   return(
+
     <div className="container pt-5 form-background">
+      <button className="go-back" onClick={() => navigate(-1)}> Go back</button>
+
       <form className="form" onSubmit={handleSubmit}>
         <div className="mb-3">
           <input className="form-control" type="text" placeholder="First Name" name="firstName" />

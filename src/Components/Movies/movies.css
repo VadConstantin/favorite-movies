@@ -84,3 +84,13 @@
 .heart-icone-disable {
 display:none
 }
+
+.go-back {
+background-color: inherit;
+margin-bottom: 30px;
+font-size: 0.8rem;
+border: none;
+color: inherit;
+margin-left: 0;
+padding: 0;
+}
