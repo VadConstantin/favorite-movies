@@ -10,7 +10,7 @@ export const MovieShow = ({movies}) => {
   const movie = movies?.filter(mov => mov.rank === params.id)[0]
   console.log(movie);
 
-  const movieUrl = movie.image.slice(0, -27) + ".jpeg"
+  const movieUrl = movie.image
 
   return(
     movies.length > 0 && (

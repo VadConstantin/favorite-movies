@@ -19,6 +19,10 @@
   position: relative;
 }
 
+.mini-card img {
+  max-width: 100px;
+}
+
 .mini-cards-wrapper{
   display: flex;
   flex-wrap: wrap;
@@ -32,12 +36,13 @@
 
 .delete-button {
   position: absolute;
-  background-color: rgb(255, 255, 255);
+  font-size: 13px;
+  background-color: rgb(178, 178, 178);
   top: -14px;
   z-index: 2;
   color: rgb(107, 107, 107);
   border-radius: 30%;
-  padding: 1px 11px 4px ;
-  border: 1px solid rgb(255, 255, 255);
-  box-shadow: 1px 3px 10px rgb(226, 226, 226);
+  padding: 0px 8px 2px ;
+  border: 1px solid rgb(178, 178, 178);
+  box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.156);
 }
