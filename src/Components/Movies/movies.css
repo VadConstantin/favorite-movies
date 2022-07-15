@@ -53,9 +53,8 @@
 .movie-form {
   padding-top: 50px;
   padding-left: 60px;
-  position: absolute;
-  bottom: 10px;
-  left: 250px;
+  position: relative;
+  top: 20px;
 }
 
 .movie-form > input {
@@ -107,4 +106,9 @@ padding: 0;
 
 .index-favorite-disable {
   display: none
+}
+
+.sort-button {
+  margin-top: 20px;
+  margin-left: 60px;
 }

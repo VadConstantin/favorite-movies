@@ -8,6 +8,7 @@ import { MovieShow }  from 'Containers/Movies/MovieShow'
 import { TvShowsShow } from 'Containers/TvShows/TvShowsShow'
 import { Favorites } from 'Containers/Favorites/Favorites'
 import Form from 'Components/Form/Form'
+import './App.css'
 
 const tvUrl = 'https://imdb-api.com/en/API/Top250TVs/k_7iuspfzy'
 const moviesUrl = "https://imdb-api.com/en/API/Top250Movies/k_7iuspfzy"
@@ -38,6 +39,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setMovies(data.items);
+        console.log("fetching movies");
       })
   }, [])
 
@@ -55,6 +57,12 @@ function App() {
     }
   }, [themeValue, tvShows, toggleTheme])
 
+  const toggleOrderMovies = () => {
+    setMovies(prev => {
+      return prev[0]
+    });
+  }
+
 
   // updating tvShows in local storage
 
@@ -66,7 +74,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home tvShows={tvShows} />}/>
             <Route path="/tvshows/:id" element={<TvShowsShow tvShows={tvShows}/>} />
-            <Route path="/movies" element={<Movies movies={movies}/>} />
+            <Route path="/movies" element={<Movies movies={movies} />} />
             <Route path="/account" element={<Form />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/movies/:id" element={<MovieShow movies={movies} />} />
