@@ -13,7 +13,7 @@ export const TvShowsShow = (props) => {
   const imageUrl = infos?.image
 
   //checking if movie is already favorited in localstorage ?
-  const isFav = Object.keys(localStorage).includes(infos?.rank) ? true : false
+  const isFav = Object.keys(localStorage).includes(infos?.rank)
 
   const handleClick = () => {
     localStorage.setItem(`${infos.rank}`, JSON.stringify(infos))
