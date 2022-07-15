@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import './home.css'
 import { Link } from 'react-router-dom'
 import { MovieCard } from 'Components/Movies/MovieCard'
@@ -10,6 +10,13 @@ export const Home = ({ tvShows }) => {
   const handleChange = useCallback((e) => {
     setInput(e.target.value);
   })
+
+
+  const isFav = (n) => {
+    return Object.keys(localStorage).includes(n)
+  }
+
+  // console.log(isFav(tvShows[1].rank))
 
   return (
     <div>
@@ -29,6 +36,7 @@ export const Home = ({ tvShows }) => {
               title={tv.title}
               year={tv.year}
               image={tv.image}
+              isFav={isFav(tv.rank)}
             /></Link>
         })}
 

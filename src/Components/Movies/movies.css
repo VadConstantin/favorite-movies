@@ -1,5 +1,5 @@
 .card-container {
-
+  position: relative
 }
 
 .movie-card {
@@ -93,4 +93,18 @@ border: none;
 color: inherit;
 margin-left: 0;
 padding: 0;
+}
+
+.index-favorite {
+  fill: rgba(232, 38, 38, 0.891);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 203px;
+  top: 36px;
+  z-index: 2;
+}
+
+.index-favorite-disable {
+  display: none
 }
