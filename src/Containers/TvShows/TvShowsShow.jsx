@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import 'Components/Movies/movies.css'
 import { useNavigate } from 'react-router-dom'
@@ -28,9 +27,7 @@ export const TvShowsShow = (props) => {
   return (
     props.tvShows.length > 0 && (
       <div className="container pt-5">
-
         <button className="go-back"onClick={() => navigate(-1)}> Go back</button>
-
         <div><strong>{infos?.title}</strong> ({infos?.year})</div>
         <button className={!isFav ? "btn btn-primary" : "btn btn-primary disabled"} onClick={handleClick}>
           {!isFav ? "Add to favorites" : "Already favorited" }

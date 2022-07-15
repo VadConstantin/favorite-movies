@@ -4,7 +4,6 @@ import './movies.css'
 export const MovieCard = (props) => {
 
   const [ active, setActive ] = useState(false)
-  const [ goUp, setGoUp ] = useState(false)
 
   // this could have been made with CSS hover but it was for fun :)
   const handleEnter = () => {

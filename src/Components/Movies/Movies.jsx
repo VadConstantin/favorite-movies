@@ -11,6 +11,10 @@ export const Movies = ({movies}) => {
     setInput(e.target.value);
   })
 
+  const isFav = (n) => {
+    return Object.keys(localStorage).includes(n)
+  }
+
   return(
     <div>
       <div className="display-flex">
@@ -29,6 +33,7 @@ export const Movies = ({movies}) => {
             title={movie.title}
             year={movie.year}
             image={movie.image}
+            isFav={isFav(movie.id)}
             /></Link>
         })}
       </div>
