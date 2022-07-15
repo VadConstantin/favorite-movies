@@ -6,17 +6,24 @@ import { MovieCard } from 'Components/Movies/MovieCard'
 export const Home = ({ tvShows }) => {
 
   const [input, setInput] = useState("")
+  const [toggleSort, setToggleSort] = useState(false)
 
   const handleChange = useCallback((e) => {
     setInput(e.target.value);
   })
 
+  const handleToggleSort = () => {
+    setToggleSort(prev => !prev)
+  }
+
+  const sortTvShows = (tvshows) => {
+    return tvshows.sort((a, b) => a.title.localeCompare(b.title))
+  }
 
   const isFav = (n) => {
     return Object.keys(localStorage).includes(n)
   }
 
-  // console.log(isFav(tvShows[1].rank))
 
   return (
     <div>
@@ -29,8 +36,10 @@ export const Home = ({ tvShows }) => {
         </form>
       </div>
 
+      <button onClick={handleToggleSort} className="btn btn-primary sort-button">Sort Tv Shows</button>
+
       <div className="movie-cards">
-        {tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())).map((tv) => {
+        {toggleSort ? sortTvShows(tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase()))).map((tv) => {
           return <Link key={tv.id} to={"/tvshows/" + tv.rank}>
             <MovieCard
               title={tv.title}
@@ -38,8 +47,17 @@ export const Home = ({ tvShows }) => {
               image={tv.image}
               isFav={isFav(tv.rank)}
             /></Link>
-        })}
-
+          }) :
+          tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())).map((tv) => {
+            return <Link key={tv.id} to={"/tvshows/" + tv.rank}>
+              <MovieCard
+                title={tv.title}
+                year={tv.year}
+                image={tv.image}
+                isFav={isFav(tv.rank)}
+              /></Link>
+          })
+        }
       </div>
     </div>
   )
