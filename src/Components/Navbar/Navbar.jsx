@@ -28,11 +28,11 @@ export const Navbar = () => {
           <div className="display-flex-links">
             <Link to="/">Tv Shows</Link>
             <Link to="/movies">Movies</Link>
-            <Link to="/account">Account</Link>
+            <Link to="/favorites">Favorites</Link>
           </div>
           <div>
             <Link to="/account" >
-              <strong>My name - </strong>
+              <strong>My account - </strong>
               {profile?.firstName || ""} {profile?.familyName || ""}
             </Link>
           </div>

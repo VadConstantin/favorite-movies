@@ -1,0 +1,53 @@
+.mini-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: inherit;
+  padding-left: 60px;
+}
+
+.movie-card-container {
+  position: relative
+}
+
+.mini-card {
+  width: 200px;
+  margin: 0 20px 0 0;
+  border: solid rgba(143, 143, 143, 0.439) 1px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.mini-card img {
+  width: 180px;
+  height: 250px;
+}
+
+.mini-cards-wrapper a {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.delete-button {
+  position: relative;
+  font-size: 13px;
+  background-color: rgb(178, 178, 178);
+  bottom: 320px;
+  left: 184px;
+  z-index: 2;
+  color: rgb(107, 107, 107);
+  border-radius: 30%;
+  padding: 0px 8px 2px;
+  border: 1px solid rgb(178, 178, 178);
+  box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.156);
+}
+
+#section-title {
+  padding-top: 50px;
+  padding-left: 60px;
+  font-size: 50px;
+  font-weight: bold;
+}

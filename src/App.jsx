@@ -6,6 +6,7 @@ import { Theme } from './Utilities'
 import { Movies } from 'Components/Movies/Movies'
 import { MovieShow }  from 'Containers/Movies/MovieShow'
 import { TvShowsShow } from 'Containers/TvShows/TvShowsShow'
+import { Favorites } from 'Containers/Favorites/Favorites'
 import Form from 'Components/Form/Form'
 
 const tvUrl = 'https://imdb-api.com/en/API/Top250TVs/k_7iuspfzy'
@@ -66,7 +67,8 @@ function App() {
             <Route path="/" element={<Home tvShows={tvShows} />}/>
             <Route path="/tvshows/:id" element={<TvShowsShow tvShows={tvShows}/>} />
             <Route path="/movies" element={<Movies movies={movies}/>} />
-            <Route path="/account" element={<Form tvShows = {tvShows} />} />
+            <Route path="/account" element={<Form />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/movies/:id" element={<MovieShow movies={movies} />} />
           </Routes>
         </div>

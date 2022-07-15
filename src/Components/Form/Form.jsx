@@ -41,22 +41,6 @@ const Form = (props) => {
     saveDataToLocalStorage()
   }, [saveDataToLocalStorage])
 
-  const getNameFromLocalStorage = (name) => {
-    const title = JSON.parse(localStorage.getItem(name)).title
-    return title.length > 13 ?
-      title.substring(0, 13) + " ..." :
-      title
-  }
-
-  const handleDeleteFav = (n) => {
-    localStorage.removeItem(n)
-    window.location.reload()
-  }
-
-  const favoriteTvShowsRanks = Object.keys(localStorage).filter(rank => parseInt(rank))
-  // => ['1', '4', '8', ...etc ] => useful for mapping favorites cards below
-
-  //uncontrolled form, only one render is when submit !
   return(
 
     <div className="container pt-5 form-background">
@@ -91,28 +75,6 @@ const Form = (props) => {
       </div>
       : ""}
 
-
-      <div className="mt-4">
-        My favorite tv shows
-        <br />
-        <div className="mini-cards-wrapper">
-          {favoriteTvShowsRanks.map(n => {
-            return <div key = { n }>
-                      <Link to={"/tvshows/" + n}>
-
-                        <div className="mini-card">
-                          <p> {getNameFromLocalStorage(n)} </p>
-                          <img src={JSON.parse(localStorage.getItem(n)).image} alt="imag"/>
-                          <button className="delete-button" onClick={() => handleDeleteFav(n)}>x</button>
-                        </div>
-                      </Link>
-
-                    </div>
-          })}
-        </div>
-
-
-      </div>
     </div>
   )
 }
