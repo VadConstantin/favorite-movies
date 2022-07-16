@@ -7,10 +7,16 @@ export const Home = ({ tvShows }) => {
 
   const [input, setInput] = useState("")
   const [toggleSort, setToggleSort] = useState(false)
+  const [toggleMostRated, setToggleMostRated] = useState(false)
 
   const handleChange = useCallback((e) => {
     setInput(e.target.value);
   })
+
+  const isFav = (n) => {
+    return Object.keys(localStorage).includes(n)
+  }
+
 
   const handleToggleSort = () => {
     setToggleSort(prev => !prev)
@@ -20,10 +26,24 @@ export const Home = ({ tvShows }) => {
     return tvshows.sort((a, b) => a.title.localeCompare(b.title))
   }
 
-  const isFav = (n) => {
-    return Object.keys(localStorage).includes(n)
+  const handleToggleMostRated = () => {
+    setToggleMostRated(prev => !prev)
   }
 
+  const sortMostRated = (tvshows) => {
+    return tvshows.sort((a,b) => a.imDbRating.localeCompare(b.imDbRating))
+  }
+
+
+  let tvShowsToRender = []
+
+  if (toggleSort) {
+    tvShowsToRender = sortTvShows(tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())))
+  } else if (toggleMostRated) {
+    tvShowsToRender = sortMostRated(tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())))
+  } else {
+    tvShowsToRender = tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase()))
+  }
 
   return (
     <div>
@@ -36,10 +56,23 @@ export const Home = ({ tvShows }) => {
         </form>
       </div>
 
-      <button onClick={handleToggleSort} className="btn btn-primary sort-button">Sort Tv Shows</button>
+      <div className="display-flex">
+
+        <div className='form-check sort-checkbox'>
+          <input id="sort" type="checkbox" onClick={handleToggleSort} className="form-check-input "/>
+          <label className="form-check-label" htmlFor="sort">Sort TV Shows (A-Z)</label>
+        </div>
+
+        <div className='form-check sort-checkbox'>
+          <input id="rated" type="checkbox" onClick={handleToggleMostRated} className="form-check-input "/>
+          <label className="form-check-label" htmlFor="rated">Most Rated</label>
+        </div>
+
+      </div>
 
       <div className="movie-cards">
-        {toggleSort ? sortTvShows(tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase()))).map((tv) => {
+
+        {tvShowsToRender.map((tv) => {
           return <Link key={tv.id} to={"/tvshows/" + tv.rank}>
             <MovieCard
               title={tv.title}
@@ -47,15 +80,6 @@ export const Home = ({ tvShows }) => {
               image={tv.image}
               isFav={isFav(tv.rank)}
             /></Link>
-          }) :
-          tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())).map((tv) => {
-            return <Link key={tv.id} to={"/tvshows/" + tv.rank}>
-              <MovieCard
-                title={tv.title}
-                year={tv.year}
-                image={tv.image}
-                isFav={isFav(tv.rank)}
-              /></Link>
           })
         }
       </div>
