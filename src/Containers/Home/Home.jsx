@@ -45,6 +45,12 @@ export const Home = ({ tvShows }) => {
     tvShowsToRender = tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase()))
   }
 
+  const toggleFavorite = (tvshow) => {
+    !isFav(tvshow.rank) ? localStorage.setItem(`${tvshow.rank}`, JSON.stringify(tvshow))
+      : localStorage.removeItem(`${tvshow.rank}`)
+    window.location.reload()
+  }
+
   return (
     <div>
       <div className="display-flex">
@@ -68,7 +74,9 @@ export const Home = ({ tvShows }) => {
 
       <div className="movie-cards">
         {tvShowsToRender.map((tv) => {
-          return <Link key={tv.id} to={"/tvshows/" + tv.rank}>
+          return (
+          <div className="card-and-button">
+            <Link key={tv.id} to={"/tvshows/" + tv.rank}>
             <MovieCard
               title={tv.title}
               year={tv.year}
@@ -76,6 +84,8 @@ export const Home = ({ tvShows }) => {
               isFav={isFav(tv.rank)}
               rating={tv.imDbRating}
             /></Link>
+            <button className="add-to-favorites-button" onClick={() => toggleFavorite(tv)}> {!isFav(tv.rank) ? "Add to favorites" : "Remove from fav"} </button>
+          </div>)
           })
         }
       </div>

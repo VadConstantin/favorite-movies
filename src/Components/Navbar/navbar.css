@@ -4,7 +4,6 @@
   padding-bottom: 50px;
   box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.312);
   position: sticky;
-  /* z-index: 1; */
 }
 
 .switch-button {
@@ -30,7 +29,7 @@
 
 .pos {
   position: fixed;
-  z-index: 3;
+  z-index: 4;
   width: 100%;
 }
 

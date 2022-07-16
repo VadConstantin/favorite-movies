@@ -13,6 +13,7 @@ import './App.css'
 const tvUrl = 'https://imdb-api.com/en/API/Top250TVs/k_7iuspfzy'
 const moviesUrl = "https://imdb-api.com/en/API/Top250Movies/k_7iuspfzy"
 
+
 // initializing the context ThemeContext
 export const MainContext = React.createContext({
   theme: Theme.dark,

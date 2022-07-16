@@ -5,8 +5,8 @@ import './favorites.css'
 export const Favorites = () => {
 
   const setShortName = (name) => {
-    return name.length > 25 ?
-      name.substring(0, 25) + " ..." :
+    return name?.length > 25 ?
+      name?.substring(0, 25) + " ..." :
       name
   }
 
@@ -18,6 +18,7 @@ export const Favorites = () => {
   const favoriteTvShowsRanks = Object.entries(localStorage)
     .filter(t => !t[0].includes('myData'))
     .filter(t => !t[0].includes('tt'))
+    .filter(t => !t[0].includes('scrollpos'))
     .map(t => JSON.parse(t[1]))
 
 
