@@ -61,7 +61,7 @@ export const Movies = (props) => {
         </div>
         <div className='form-check sort-checkbox'>
           <input id="rated" type="checkbox" onClick={handleToggleMostRated} className="form-check-input " />
-          <label className="form-check-label" htmlFor="rated">Most Rated Movies</label>
+          <label className="form-check-label" htmlFor="rated">Lowest Rated Movies</label>
         </div>
       </div>
 
@@ -73,6 +73,7 @@ export const Movies = (props) => {
               year={movie.year}
               image={movie.image}
               isFav={isFav(movie.id)}
+              rating={movie.imDbRating}
               /></Link>
             })
         }

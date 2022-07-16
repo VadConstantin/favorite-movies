@@ -30,7 +30,7 @@ export const Home = ({ tvShows }) => {
     setToggleMostRated(prev => !prev)
   }
 
-  const sortMostRated = (tvshows) => {
+  const MostRated = (tvshows) => {
     return tvshows.sort((a,b) => a.imDbRating.localeCompare(b.imDbRating))
   }
 
@@ -40,7 +40,7 @@ export const Home = ({ tvShows }) => {
   if (toggleSort) {
     tvShowsToRender = sortTvShows(tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())))
   } else if (toggleMostRated) {
-    tvShowsToRender = sortMostRated(tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())))
+    tvShowsToRender = MostRated(tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase())))
   } else {
     tvShowsToRender = tvShows.filter(tv => tv.title.toLowerCase().includes(input.toLowerCase()))
   }
@@ -62,7 +62,7 @@ export const Home = ({ tvShows }) => {
         </div>
         <div className='form-check sort-checkbox'>
           <input id="rated" type="checkbox" onClick={handleToggleMostRated} className="form-check-input "/>
-          <label className="form-check-label" htmlFor="rated">Most Rated</label>
+          <label className="form-check-label" htmlFor="rated">Lowest Rated TV Shows</label>
         </div>
       </div>
 
@@ -74,6 +74,7 @@ export const Home = ({ tvShows }) => {
               year={tv.year}
               image={tv.image}
               isFav={isFav(tv.rank)}
+              rating={tv.imDbRating}
             /></Link>
           })
         }

@@ -10,6 +10,7 @@ export const TvShowsShow = (props) => {
 
   const infos = props.tvShows.filter(mov => mov.rank === params.id)[0]
   const imageUrl = infos?.image
+  const rating = infos?.imDbRating
 
   //checking if movie is already favorited in localstorage ?
   const isFav = Object.keys(localStorage).includes(infos?.rank)
