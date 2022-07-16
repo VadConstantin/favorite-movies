@@ -112,3 +112,18 @@ padding: 0;
   margin-top: 20px;
   margin-left: 60px;
 }
+
+.rating-index {
+  position: relative;
+  bottom: 53px;
+  left: 160px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9);
+  max-width: 80px;
+  padding: 10px 10px 10px 18px;
+  border-radius: 3px;
+  font-weight: bold;
+  transform: scale(0.8);
+  color: black;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
+}
