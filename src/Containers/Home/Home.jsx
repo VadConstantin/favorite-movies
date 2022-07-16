@@ -49,7 +49,6 @@ export const Home = ({ tvShows }) => {
     <div>
       <div className="display-flex">
         <div id="movies-title">Tv Shows</div>
-
         <form className="movie-form">
           <label htmlFor="filter">Find a tv show ! </label>
           <input id="filter" type="text" onChange={handleChange} />
@@ -57,21 +56,17 @@ export const Home = ({ tvShows }) => {
       </div>
 
       <div className="display-flex">
-
         <div className='form-check sort-checkbox'>
           <input id="sort" type="checkbox" onClick={handleToggleSort} className="form-check-input "/>
           <label className="form-check-label" htmlFor="sort">Sort TV Shows (A-Z)</label>
         </div>
-
         <div className='form-check sort-checkbox'>
           <input id="rated" type="checkbox" onClick={handleToggleMostRated} className="form-check-input "/>
           <label className="form-check-label" htmlFor="rated">Most Rated</label>
         </div>
-
       </div>
 
       <div className="movie-cards">
-
         {tvShowsToRender.map((tv) => {
           return <Link key={tv.id} to={"/tvshows/" + tv.rank}>
             <MovieCard
