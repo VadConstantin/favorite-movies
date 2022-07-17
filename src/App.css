@@ -53,6 +53,7 @@
   .switch-button {
     display: none
   }
+
 }
 
 @media (max-width: 540px) {
@@ -68,7 +69,7 @@
     }
 
   .movie-title {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .index-favorite {
@@ -80,4 +81,15 @@
     top: 17px;
     z-index: 2;
   }
+
+  .rating-index {
+    display: none;
+  }
+
+  .add-to-favorites-button{
+    font-size: 12px;
+    bottom: 8px;
+    left: 13px;
+  }
+
 }

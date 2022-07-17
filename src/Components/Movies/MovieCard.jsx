@@ -15,7 +15,7 @@ export const MovieCard = (props) => {
   }
 
   const movieUrl = props.image
-  const movieTitle = props.title.length > 20 ? props.title.substring(0, 20) + " ..." : props.title
+  const movieTitle = props.title.length > 21 ? props.title.substring(0, 21) + " ..." : props.title
   const movieYear = props.year
   const rating = props.rating
 
