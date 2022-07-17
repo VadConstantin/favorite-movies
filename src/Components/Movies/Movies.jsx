@@ -3,7 +3,6 @@ import { MovieCard } from 'Components/Movies/MovieCard'
 import { Link } from 'react-router-dom'
 import './movies.css'
 
-
 export const Movies = (props) => {
 
   const [ toggleSort, setToggleSort ] = useState(false)
@@ -32,6 +31,13 @@ export const Movies = (props) => {
 
   const handleToggleMostRated = () => {
     setToggleMostRated(prev => !prev)
+  }
+
+  const handleToggleFavorite = (movie) => {
+    isFav(movie.id) ?
+    localStorage.removeItem(movie.id) :
+    localStorage.setItem(movie.id, JSON.stringify(movie))
+    window.location.reload()
   }
 
   let moviesToRender = []
@@ -67,14 +73,18 @@ export const Movies = (props) => {
 
       <div className="movie-cards">
         {moviesToRender.map((movie) => {
-            return <Link key={movie.id} to={"/movies/" + movie.rank}>
-              <MovieCard
-              title={movie.title}
-              year={movie.year}
-              image={movie.image}
-              isFav={isFav(movie.id)}
-              rating={movie.imDbRating}
-              /></Link>
+            return (
+              <div key={movie.id} className="card-and-button">
+                <Link  to={"/movies/" + movie.rank}>
+                <MovieCard
+                title={movie.title}
+                year={movie.year}
+                image={movie.image}
+                isFav={isFav(movie.id)}
+                rating={movie.imDbRating}
+                /></Link>
+                <button className="add-to-favorites-button" onClick={() => handleToggleFavorite(movie)}>{!isFav(movie.id) ? "Add to favorites" : "Remove from favs"}</button>
+              </div>)
             })
         }
       </div>

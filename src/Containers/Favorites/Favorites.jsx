@@ -26,10 +26,6 @@ export const Favorites = () => {
     .filter(t => t[0].includes('tt'))
     .map(t => JSON.parse(t[1]))
 
-
-  console.log(favoriteMoviesIds[0]);
-
-
   return(
     <div className="">
       <div>

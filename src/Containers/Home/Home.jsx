@@ -75,8 +75,8 @@ export const Home = ({ tvShows }) => {
       <div className="movie-cards">
         {tvShowsToRender.map((tv) => {
           return (
-          <div className="card-and-button">
-            <Link key={tv.id} to={"/tvshows/" + tv.rank}>
+            <div key={tv.id} className="card-and-button">
+            <Link to={"/tvshows/" + tv.rank}>
             <MovieCard
               title={tv.title}
               year={tv.year}
