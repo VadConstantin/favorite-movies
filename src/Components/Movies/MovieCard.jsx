@@ -14,7 +14,7 @@ export const MovieCard = (props) => {
     setActive(t => !t)
   }
 
-  const movieUrl = props.image
+  const movieUrl = props.image.slice(0, -27) + ".jpeg"
   const movieTitle = props.title.length > 21 ? props.title.substring(0, 21) + " ..." : props.title
   const movieYear = props.year
   const rating = props.rating

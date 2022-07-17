@@ -29,6 +29,7 @@
 
 .card-and-button {
   position: relative;
+  max-height: 418px;
 }
 
 /* button:hover {
