@@ -27,7 +27,7 @@ export const Favorites = () => {
     .map(t => JSON.parse(t[1]))
 
   return(
-    <div className="">
+    <div className="favorites-background">
       <div>
         <p id="section-title">My favorite movies</p>
         <br />
