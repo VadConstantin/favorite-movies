@@ -23,9 +23,16 @@ export const MainContext = React.createContext({
 
 function App() {
 
+  // const defaultTheme = localStorage.getItem('myTheme') !== null ?
+  // JSON.parse(localStorage.getItem('myTheme')) :
+  // Theme.dark
+
   const [ tvShows, setTvShows ] = useState([])
-  const [ themeValue, setThemeValue ] = useState(Theme.light)
   const [ movies, setMovies ] = useState([])
+  const [ themeValue, setThemeValue ] = useState(Theme.light)
+
+
+  console.log(themeValue)
 
   // fetching tvShows
   useEffect(() => {
@@ -40,13 +47,13 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setMovies(data.items);
-        console.log("fetching movies");
       })
   }, [])
 
   // toggling theme value
   const toggleTheme = useCallback(() => {
     setThemeValue(t => t === Theme.dark ? Theme.light : Theme.dark)
+    // localStorage.setItem('myTheme', JSON.stringify(themeValue))
   }, [])
 
   // creating the final value to pass to the provider
